@@ -5,8 +5,9 @@ using Xunit;
 
 namespace BlazorToDoList.Test.Data.Test
 {
-    public class DataTests
+    public class DataTests: IClassFixture<DbContextHelper>
     {
+        DbFixture = 
         [Fact]
         public void DB_should_be_created()
         {
@@ -17,7 +18,7 @@ namespace BlazorToDoList.Test.Data.Test
 
             // assert
             Assert.NotNull(db);
-            db.Dispose();
+           
 
         }
         [Fact]
@@ -31,7 +32,7 @@ namespace BlazorToDoList.Test.Data.Test
             var actual = db.Todos.Count();
             // assert
             Assert.Equal(exepected, actual);
-            db.Dispose();
+            
         }
 
     }
