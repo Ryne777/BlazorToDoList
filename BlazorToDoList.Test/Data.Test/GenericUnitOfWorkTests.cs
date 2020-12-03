@@ -1,29 +1,27 @@
-﻿using BlazorToDoList.Data;
-using BlazorToDoList.Data.Models;
+﻿using BlazorToDoList.Data.Models;
 using BlazorToDoList.Data.Repository;
 using BlazorToDoList.Test.Infrastucture;
-using Microsoft.EntityFrameworkCore;
-using Moq;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using Xunit;
 
 namespace BlazorToDoList.Test.Data.Test
 {
-    public class GenericRepositoryTests
+    public class GenericUnitOfWorkTests
     {
         [Fact]
-        public void Try_Use_Generic_repository()
+        public void Try_Use_Generic_UnitOFWork()
         {
             // Arrange            
             var expected = "test description";
             var context = new DbContextHelper();
+
             // Act
-            var rep = new EFGenericRepository<ToDo>(context.Context);
-            var actual = rep.GetAll().Result.FirstOrDefault<ToDo>();
+            var rep = new EFGenericUnitOfWork<EFGenericRepository<ToDo>, ToDo>(context.Context);
+            var res = rep.Repository();
+            var actual = res.GetAll().Result.FirstOrDefault<ToDo>();
             // Assert
             Assert.NotNull(actual);
             Assert.Equal(expected, actual.Description);

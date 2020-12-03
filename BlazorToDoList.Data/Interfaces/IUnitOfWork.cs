@@ -1,12 +1,17 @@
 ﻿using BlazorToDoList.Data.Models;
 using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace BlazorToDoList.Data.Interfaces
 {
-    public interface IUnitOfWork : IDisposable
+    public interface IUnitOfWork<TRepo, TEntity> : IDisposable 
+        where TRepo : IRepository<TEntity>
+        where TEntity : class
     {
-        IRepository<ToDo> Todo { get; }
+        public Dictionary<Type, TRepo> Repositories { get; }
 
-        void Save();
+        public TRepo Repository();
+        Task Save();
     }
 }

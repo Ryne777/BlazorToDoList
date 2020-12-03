@@ -4,7 +4,7 @@ using System;
 
 namespace BlazorToDoList.Test.Infrastucture
 {
-    public class DbContextHelper :IDisposable
+    public class DbContextHelper //:IDisposable
     {
         public ApplicationDbContext Context { get; set; }
 
@@ -14,11 +14,13 @@ namespace BlazorToDoList.Test.Infrastucture
             builder.UseInMemoryDatabase("TEST_DB_BLAZOR_TODO_LIST");
             var options = builder.Options;
             Context = new ApplicationDbContext(options);
-
-            Context.AddRange(TodoListHelper.GetMany());
+            var enumerator = new TodoListHelper();
+            Context.AddRange(enumerator.GetMany());
+            enumerator.Dispose();
             Context.SaveChanges();
+            
         }
 
-        public void Dispose() => Context.Dispose();
+        //public void Dispose() => Context.Dispose();
     }
 }
