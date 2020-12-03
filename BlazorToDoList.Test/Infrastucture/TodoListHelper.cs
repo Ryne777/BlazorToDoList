@@ -15,7 +15,7 @@ namespace BlazorToDoList.Test.Infrastucture
         {
             return new ToDo
             {
-                Id = Guid.NewGuid(),
+                Id = Guid.Parse("e5291737-bf7a-4f8f-8936-11999db20dac"),
                 Description = "test description",
                 Status = Status.InWork
             };

@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace BlazorToDoList.Data.Repository
 {
-    class EFGenericRepository<T> : IRepository<T> where T : class
+    public class EFGenericRepository<T> : IRepository<T> where T : class
     {
         private ApplicationDbContext _db;
 
@@ -24,7 +24,7 @@ namespace BlazorToDoList.Data.Repository
             await _db.SaveChangesAsync();
         }
 
-        public async Task Delete(int id)
+        public async Task Delete(Guid id)
         {
             _db.Remove<T>(await Get(id));
 
@@ -35,7 +35,7 @@ namespace BlazorToDoList.Data.Repository
             return await _db.Set<T>().AsNoTracking().Where(predicate).AsQueryable().ToListAsync();
         }
 
-        public async Task<T> Get(int id)
+        public async Task<T> Get(Guid id)
         {
             return await _db.FindAsync<T>(id);
         }
