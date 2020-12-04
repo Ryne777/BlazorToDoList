@@ -6,12 +6,12 @@ namespace BlazorToDoList.Test.Infrastucture
 {
     public class TodoListHelper : IDisposable
     {
-        public  IEnumerable<ToDo> GetMany()
+        public static  IEnumerable<ToDo> GetMany()
         {
             yield return GetOne();
         }
 
-        public  ToDo GetOne()
+        public static ToDo GetOne()
         {
             return new ToDo
             {

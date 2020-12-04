@@ -1,6 +1,8 @@
-﻿using BlazorToDoList.Data.Models;
+﻿using BlazorToDoList.Data.Interfaces;
+using BlazorToDoList.Data.Models;
 using BlazorToDoList.Data.Repository;
 using BlazorToDoList.Test.Infrastucture;
+using Moq;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,12 +18,16 @@ namespace BlazorToDoList.Test.Data.Test
         {
             // Arrange            
             var expected = "test description";
+            var customRep = false;
             var context = new DbContextHelper();
-
+            var mockUoW = new Mock<IUnitOfWork>();
+            var modRep = new Mock<IRepository<ToDo>>();
+            modRep.Setup(x => x.GetAll()).ReturnsAsync(TodoListHelper.GetMany());
+            mockUoW.Setup(x => x.GetRepository<ToDo>(customRep)).Returns(modRep.Object);
             // Act
-            var rep = new EFGenericUnitOfWork<EFGenericRepository<ToDo>, ToDo>(context.Context);
-            var res = rep.Repository();
-            var actual = res.GetAll().Result.FirstOrDefault<ToDo>();
+
+
+            var actual = mockUoW.Object.GetRepository<ToDo>().GetAll().Result.FirstOrDefault<ToDo>();
             // Assert
             Assert.NotNull(actual);
             Assert.Equal(expected, actual.Description);

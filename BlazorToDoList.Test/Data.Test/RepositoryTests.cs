@@ -122,7 +122,7 @@ namespace BlazorToDoList.Test.Data.Test
         }
 
         [Fact]
-        public void Delete_Todo_Call_Repository_Create()
+        public void Delete_Todo_Call_Repository()
         {
             // Arrange
             var expected = new ToDo
@@ -143,5 +143,37 @@ namespace BlazorToDoList.Test.Data.Test
             Assert.NotNull(actual);
             mock.Verify(x => x.Delete(Guid.Parse("228f89dc-16fe-49bf-8b32-fcf7db3391ab")), Times.Once());
         }
+       
+        [Fact]
+        public void Update_Todo_Call_Repository()
+        {
+            // Arrange
+            var expected = new ToDo
+            {
+                Id = Guid.Parse("3ce39381-f57a-4358-856b-a21fc681df7a"),
+                Description = "nEwr",
+                Status = Status.Faild
+
+            };
+            var mock = new Mock<IRepository<ToDo>>();
+            mock.Setup(x => x.GetAll()).ReturnsAsync(toDoList);
+            mock.Setup(x => x.Get(It.IsAny<Guid>()))
+                .ReturnsAsync((Guid id) => toDoList.Single(c => c.Id == id));
+            mock.Setup(x => x.Update(It.IsAny<ToDo>())).Callback((ToDo  item) => 
+            toDoList.Find(x=>x.Id ==item.Id)
+            .Description = item.Description).Verifiable();
+
+
+            // Act
+
+            mock.Object.Update(expected);
+            var actual = mock.Object.Get(Guid.Parse("3ce39381-f57a-4358-856b-a21fc681df7a")).Result;
+            // Assert
+            Assert.NotNull(actual);
+            mock.Verify(x => x.Update(expected), Times.Once());
+            Assert.Equal(expected.Description, actual.Description);
+        }
+
+
     }
 }

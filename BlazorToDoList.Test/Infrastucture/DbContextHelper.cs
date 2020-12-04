@@ -13,10 +13,8 @@ namespace BlazorToDoList.Test.Infrastucture
             var builder = new DbContextOptionsBuilder<ApplicationDbContext>();
             builder.UseInMemoryDatabase("TEST_DB_BLAZOR_TODO_LIST");
             var options = builder.Options;
-            Context = new ApplicationDbContext(options);
-            var enumerator = new TodoListHelper();
-            Context.AddRange(enumerator.GetMany());
-            enumerator.Dispose();
+            Context = new ApplicationDbContext(options);           
+            Context.AddRange(TodoListHelper.GetMany());           
             Context.SaveChanges();
             
         }
