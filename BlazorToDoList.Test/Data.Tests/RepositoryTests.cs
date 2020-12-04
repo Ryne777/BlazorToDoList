@@ -8,7 +8,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Xunit;
 
-namespace BlazorToDoList.Test.Data.Test
+namespace BlazorToDoList.Test.Data.Tests
 {
     public class RepositoryTests
     {

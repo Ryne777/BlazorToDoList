@@ -11,7 +11,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Xunit;
 
-namespace BlazorToDoList.Test.Data.Test
+namespace BlazorToDoList.Test.Data.Tests
 {
     public class GenericRepositoryTests
     {
