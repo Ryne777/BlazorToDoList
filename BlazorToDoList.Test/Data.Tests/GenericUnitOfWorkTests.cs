@@ -24,6 +24,7 @@ namespace BlazorToDoList.Test.Data.Tests
             var modRep = new Mock<IRepository<ToDo>>();
             modRep.Setup(x => x.GetAll()).ReturnsAsync(TodoListHelper.GetMany());
             mockUoW.Setup(x => x.GetRepository<ToDo>(customRep)).Returns(modRep.Object);
+            mockUoW.Setup(x => x.GetRepository<ToDo>(customRep).Create(It.IsAny<ToDo>()));
             // Act
 
 

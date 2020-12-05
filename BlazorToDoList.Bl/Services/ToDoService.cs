@@ -3,6 +3,7 @@ using BlazorToDoList.Bl.ViewModels;
 using BlazorToDoList.Data.Interfaces;
 using BlazorToDoList.Data.Models;
 using System;
+using System.Linq;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
@@ -36,7 +37,18 @@ namespace BlazorToDoList.Bl.Services
 
         public async Task<IEnumerable<IndexToDoViewModel>> GetAll()
         {
-            return (IEnumerable <IndexToDoViewModel>) await _uow.GetRepository<ToDo>().GetAll();
+            var res = await _uow.GetRepository<ToDo>().GetAll();
+            var result = new List<IndexToDoViewModel>();
+            foreach (var item in res)
+            {
+                result.Add(new IndexToDoViewModel
+                {
+                    Description = item.Description,
+                    Status = item.Status.ToString()
+                });
+                
+            }
+            return result;
         }
 
         public async Task<IndexToDoViewModel> GetOneToDoById(string id)
