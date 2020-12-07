@@ -45,8 +45,8 @@ namespace BlazorToDoList.Data.Repository
 
 
         public void Update(TEntity item)
-        {
-            _db.Update(item);
+        {            
+            _db.Update(item);           
             
         }
         public IEnumerable<TEntity> GetWithInclude(params Expression<Func<TEntity, object>>[] includeProperties)

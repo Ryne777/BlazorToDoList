@@ -17,6 +17,6 @@ namespace BlazorToDoList.Bl.Interfaces
 
         Task<IndexToDoViewModel> GetOneToDoById(string id);
 
-        Task UpdateToDo(UpdateTodoViewModel item);
+        Task<int> UpdateToDo(string id, UpdateTodoViewModel item);
     }
 }

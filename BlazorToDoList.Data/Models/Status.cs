@@ -2,6 +2,7 @@
 {
     public enum Status
     {
+        None,
         InWork,
         Faild,
         Completed

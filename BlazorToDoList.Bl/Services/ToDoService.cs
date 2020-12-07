@@ -26,13 +26,15 @@ namespace BlazorToDoList.Bl.Services
             {
                 Id = Guid.NewGuid(),
                 Description = item.Description,
-                Status = (Status)Enum.Parse(typeof(Status), item.Status)
+                Status = item.Status
             });
+            await _uow.SaveChangesAsync();
         }
 
         public async Task DeleteToDo(string id)
         {
             await _uow.GetRepository<ToDo>().Delete(Guid.Parse(id));
+            await _uow.SaveChangesAsync();
         }
 
         public async Task<IEnumerable<IndexToDoViewModel>> GetAll()
@@ -43,9 +45,10 @@ namespace BlazorToDoList.Bl.Services
             {
                 result.Add(new IndexToDoViewModel
                 {
+                    Id = item.Id.ToString(),
                     Description = item.Description,
                     Status = item.Status.ToString()
-                });
+                }); 
                 
             }
             return result;
@@ -56,21 +59,19 @@ namespace BlazorToDoList.Bl.Services
             var res =  await _uow.GetRepository<ToDo>().Get(Guid.Parse(id));
             return new IndexToDoViewModel()
             {
+                Id = id,
                 Description = res.Description,
                 Status = res.Status.ToString()
             };
         }
 
-        public async Task UpdateToDo(UpdateTodoViewModel item)
+        public async Task<int> UpdateToDo(string id, UpdateTodoViewModel item)
         {
             var repos = _uow.GetRepository<ToDo>();
-            var toDo = await repos.Get(Guid.Parse(item.Id));
-            repos.Update(new ToDo
-            {
-                Id = toDo.Id,
-                Description = toDo.Description,
-                Status = (Status)Enum.Parse(typeof(Status), item.Status)
-            });
+            var toDo = await repos.Get(Guid.Parse(id));
+            toDo.Status = item.Status;
+            repos.Update(toDo);
+            return await _uow.SaveChangesAsync();
         }
     }
 }
