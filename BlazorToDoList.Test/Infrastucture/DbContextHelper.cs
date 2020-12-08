@@ -1,6 +1,5 @@
 ﻿using BlazorToDoList.Data;
 using Microsoft.EntityFrameworkCore;
-using System;
 
 namespace BlazorToDoList.Test.Infrastucture
 {
@@ -13,10 +12,10 @@ namespace BlazorToDoList.Test.Infrastucture
             var builder = new DbContextOptionsBuilder<ApplicationDbContext>();
             builder.UseInMemoryDatabase("TEST_DB_BLAZOR_TODO_LIST");
             var options = builder.Options;
-            Context = new ApplicationDbContext(options);           
-            Context.AddRange(TodoListHelper.GetMany());           
+            Context = new ApplicationDbContext(options);
+            Context.AddRange(TodoListHelper.GetMany());
             Context.SaveChanges();
-            
+
         }
 
         //public void Dispose() => Context.Dispose();

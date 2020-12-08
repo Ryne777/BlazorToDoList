@@ -1,14 +1,7 @@
-﻿using BlazorToDoList.Data;
-using BlazorToDoList.Data.Models;
+﻿using BlazorToDoList.Data.Models;
 using BlazorToDoList.Data.Repository;
 using BlazorToDoList.Test.Infrastucture;
-using Microsoft.EntityFrameworkCore;
-using Moq;
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Xunit;
 
 namespace BlazorToDoList.Test.Data.Tests

@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace BlazorToDoList.Bl.ViewModels
+﻿namespace BlazorToDoList.Bl.ViewModels
 {
     public class IndexToDoViewModel
     {

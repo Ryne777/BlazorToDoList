@@ -1,8 +1,5 @@
 ﻿using BlazorToDoList.Bl.ViewModels;
-using BlazorToDoList.Data.Interfaces;
-using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace BlazorToDoList.Bl.Interfaces

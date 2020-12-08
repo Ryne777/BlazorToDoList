@@ -1,14 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using BlazorToDoList.Bl.Interfaces;
-using BlazorToDoList.Bl.Services;
-using BlazorToDoList.Bl.ViewModels;
+﻿using BlazorToDoList.Bl.Services;
 using BlazorToDoList.Data.Interfaces;
 using BlazorToDoList.Data.Models;
 using BlazorToDoList.Test.Infrastucture;
 using Moq;
+using System.Linq;
 using Xunit;
 
 namespace BlazorToDoList.Test.Bl.Tests
@@ -19,8 +14,8 @@ namespace BlazorToDoList.Test.Bl.Tests
         public void Try_Use_Service()
         {
             // Arrange
-            var expected = 1;    
-            var customRep = false;             
+            var expected = 1;
+            var customRep = false;
             var mockUoW = new Mock<IUnitOfWork>();
             var modRep = new Mock<IRepository<ToDo>>();
             modRep.Setup(x => x.GetAll()).ReturnsAsync(TodoListHelper.GetMany());
@@ -57,5 +52,5 @@ namespace BlazorToDoList.Test.Bl.Tests
 
 
 
-}
+    }
 }

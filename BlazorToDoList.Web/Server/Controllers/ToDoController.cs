@@ -1,9 +1,7 @@
 ﻿using BlazorToDoList.Bl.Interfaces;
 using BlazorToDoList.Bl.ViewModels;
 using Microsoft.AspNetCore.Mvc;
-using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -23,7 +21,7 @@ namespace BlazorToDoList.Web.Server.Controllers
         [HttpGet]
         public async Task<IEnumerable<IndexToDoViewModel>> GetToDoList()
         {
-           return await _service.GetAll();
+            return await _service.GetAll();
         }
 
         // GET api/<ToDoController>/5

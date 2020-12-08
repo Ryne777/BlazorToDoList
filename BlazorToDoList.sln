@@ -9,13 +9,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorToDoList.Test", "Blaz
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorToDoList.Bl", "BlazorToDoList.Bl\BlazorToDoList.Bl.csproj", "{8E5E9037-A1B6-4F1B-9AA3-BD3442526A5F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlazorToDoList.Web.Server", "BlazorToDoList.Web\Server\BlazorToDoList.Web.Server.csproj", "{9D6C2F31-78B9-4767-83FA-9CBF932F7410}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorToDoList.Web.Server", "BlazorToDoList.Web\Server\BlazorToDoList.Web.Server.csproj", "{9D6C2F31-78B9-4767-83FA-9CBF932F7410}"
 	ProjectSection(ProjectDependencies) = postProject
 		{8E5E9037-A1B6-4F1B-9AA3-BD3442526A5F} = {8E5E9037-A1B6-4F1B-9AA3-BD3442526A5F}
 		{EE77F939-98FF-4272-A059-2CC57866DCA0} = {EE77F939-98FF-4272-A059-2CC57866DCA0}
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlazorToDoList.Web.Client", "BlazorToDoList.Web\Client\BlazorToDoList.Web.Client.csproj", "{8E9DD4A5-3561-4AEB-8850-A966461867FE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorToDoList.Web.Client", "BlazorToDoList.Web\Client\BlazorToDoList.Web.Client.csproj", "{8E9DD4A5-3561-4AEB-8850-A966461867FE}"
 	ProjectSection(ProjectDependencies) = postProject
 		{8E5E9037-A1B6-4F1B-9AA3-BD3442526A5F} = {8E5E9037-A1B6-4F1B-9AA3-BD3442526A5F}
 	EndProjectSection

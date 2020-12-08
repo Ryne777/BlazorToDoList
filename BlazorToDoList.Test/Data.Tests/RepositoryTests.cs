@@ -1,11 +1,9 @@
 ﻿using BlazorToDoList.Data.Interfaces;
 using BlazorToDoList.Data.Models;
-using BlazorToDoList.Test.Infrastucture;
 using Moq;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using Xunit;
 
 namespace BlazorToDoList.Test.Data.Tests
@@ -56,7 +54,7 @@ namespace BlazorToDoList.Test.Data.Tests
         public void Get_By_id()
         {
             // Arrange
-            var  expected = new ToDo
+            var expected = new ToDo
             {
                 Id = Guid.Parse("3ce39381-f57a-4358-856b-a21fc681df7a"),
                 Description = "nEw",
@@ -66,9 +64,9 @@ namespace BlazorToDoList.Test.Data.Tests
             var mock = new Mock<IRepository<ToDo>>();
             mock.Setup(x => x.Get(It.IsAny<Guid>()))
                 .ReturnsAsync((Guid id) => toDoList.Single(c => c.Id == id));
-            
+
             // Act
-            
+
             var actual = mock.Object.Get(Guid.Parse("3ce39381-f57a-4358-856b-a21fc681df7a")).Result;
             // Assert
             Assert.NotNull(actual);
@@ -111,7 +109,7 @@ namespace BlazorToDoList.Test.Data.Tests
             };
             var mock = new Mock<IRepository<ToDo>>();
             mock.Setup(x => x.Create(It.IsAny<ToDo>()));
-                
+
 
             // Act
 
@@ -143,7 +141,7 @@ namespace BlazorToDoList.Test.Data.Tests
             Assert.NotNull(actual);
             mock.Verify(x => x.Delete(Guid.Parse("228f89dc-16fe-49bf-8b32-fcf7db3391ab")), Times.Once());
         }
-       
+
         [Fact]
         public void Update_Todo_Call_Repository()
         {
@@ -159,8 +157,8 @@ namespace BlazorToDoList.Test.Data.Tests
             mock.Setup(x => x.GetAll()).ReturnsAsync(toDoList);
             mock.Setup(x => x.Get(It.IsAny<Guid>()))
                 .ReturnsAsync((Guid id) => toDoList.Single(c => c.Id == id));
-            mock.Setup(x => x.Update(It.IsAny<ToDo>())).Callback((ToDo  item) => 
-            toDoList.Find(x=>x.Id ==item.Id)
+            mock.Setup(x => x.Update(It.IsAny<ToDo>())).Callback((ToDo item) =>
+            toDoList.Find(x => x.Id == item.Id)
             .Description = item.Description).Verifiable();
 
 

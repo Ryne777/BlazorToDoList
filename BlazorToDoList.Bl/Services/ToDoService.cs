@@ -3,9 +3,7 @@ using BlazorToDoList.Bl.ViewModels;
 using BlazorToDoList.Data.Interfaces;
 using BlazorToDoList.Data.Models;
 using System;
-using System.Linq;
 using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace BlazorToDoList.Bl.Services
@@ -48,15 +46,15 @@ namespace BlazorToDoList.Bl.Services
                     Id = item.Id.ToString(),
                     Description = item.Description,
                     Status = item.Status.ToString()
-                }); 
-                
+                });
+
             }
             return result;
         }
 
         public async Task<IndexToDoViewModel> GetOneToDoById(string id)
         {
-            var res =  await _uow.GetRepository<ToDo>().Get(Guid.Parse(id));
+            var res = await _uow.GetRepository<ToDo>().Get(Guid.Parse(id));
             return new IndexToDoViewModel()
             {
                 Id = id,

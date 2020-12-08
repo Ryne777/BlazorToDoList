@@ -7,7 +7,6 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
-using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Transactions;
@@ -35,7 +34,7 @@ namespace BlazorToDoList.Data.Repository
         /// <returns>The instance of type <typeparamref name="TContext"/>.</returns>
         public TContext DbContext => _context;
 
-        
+
 
         /// <summary>
         /// Changes the database name. This require the databases in the same machine. NOTE: This only work for MySQL right now.

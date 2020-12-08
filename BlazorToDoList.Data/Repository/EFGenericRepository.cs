@@ -22,7 +22,7 @@ namespace BlazorToDoList.Data.Repository
         public async Task Create(TEntity item)
         {
             await _db.AddAsync<TEntity>(item);
-            
+
         }
 
         public async Task Delete(Guid id)
@@ -45,9 +45,9 @@ namespace BlazorToDoList.Data.Repository
 
 
         public void Update(TEntity item)
-        {            
-            _db.Update(item);           
-            
+        {
+            _db.Update(item);
+
         }
         public IEnumerable<TEntity> GetWithInclude(params Expression<Func<TEntity, object>>[] includeProperties)
         {

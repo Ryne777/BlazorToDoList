@@ -6,7 +6,7 @@ namespace BlazorToDoList.Test.Infrastucture
 {
     public class TodoListHelper : IDisposable
     {
-        public static  IEnumerable<ToDo> GetMany()
+        public static IEnumerable<ToDo> GetMany()
         {
             yield return GetOne();
         }
@@ -23,7 +23,7 @@ namespace BlazorToDoList.Test.Infrastucture
 
         public void Dispose()
         {
-            
+
             GC.SuppressFinalize(this);
         }
     }
