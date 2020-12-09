@@ -27,17 +27,21 @@ namespace BlazorToDoList.Web.Server
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddRazorPages();
+            services.AddRazorPages();            
             services.AddControllersWithViews()
                     .AddJsonOptions(options =>
                     options.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter()));
+
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "My API", Version = "v1" });
+                
             });
             services.AddDbContext<ApplicationDbContext>(opt => opt.UseInMemoryDatabase("Firt_DataBase"));
+            services.AddScoped<ApplicationDbContext>();
             services.AddScoped<IToDoService, ToDoService>();
             services.AddScoped<IUnitOfWork, EFGenericUnitOfWork<ApplicationDbContext>>();
+            
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -72,6 +76,7 @@ namespace BlazorToDoList.Web.Server
                 endpoints.MapControllers();
                 endpoints.MapFallbackToFile("index.html");
             });
+            SeedData.EnsurePopulated(app);
         }
     }
 }

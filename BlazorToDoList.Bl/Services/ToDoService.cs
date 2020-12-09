@@ -10,7 +10,7 @@ namespace BlazorToDoList.Bl.Services
 {
     public class ToDoService : IToDoService
     {
-        private IUnitOfWork _uow;
+        private readonly IUnitOfWork _uow;
 
         public ToDoService(IUnitOfWork uow)
         {
