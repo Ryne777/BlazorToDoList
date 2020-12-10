@@ -1,7 +1,9 @@
 ﻿@inherits ToDoListComponentModel
 
-@foreach (var item in ToDoList)
-{
-    <ToDoComponent ToDo="item"></ToDoComponent>
 
-}
+<div>
+    @foreach (var item in ToDoList)
+    {
+        <ToDoComponent ToDo="item" DeleteEvent="DeleteFromList" UpdateEvent="Update"></ToDoComponent>
+    }
+</div>

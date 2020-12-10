@@ -22,3 +22,15 @@ html, body {
     padding: 0;
     margin: 0;
 }
+.demo-mat-card {
+    max-width: 400px;
+    margin: 10px;
+}
+
+.demo-mat-card-content {
+    padding: 1rem;
+}
+
+.demo-mat-card-clean-margin {
+    margin: 0px;
+}

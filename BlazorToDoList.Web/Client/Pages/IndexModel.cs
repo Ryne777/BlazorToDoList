@@ -1,6 +1,5 @@
 ﻿using BlazorToDoList.Bl.ViewModels;
 using Microsoft.AspNetCore.Components;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
@@ -9,21 +8,40 @@ using System.Threading.Tasks;
 
 namespace BlazorToDoList.Web.Client.Pages
 {
-    public class IndexModel:ComponentBase
+    public class IndexModel : ComponentBase
     {
         [Inject]
-        private HttpClient  HttpClient { get; set; }
-        protected IEnumerable<IndexToDoViewModel> toDoList;
-        public IndexToDoViewModel ToDo { get; set; }
+        private HttpClient HttpClient { get; set; }
+        protected IEnumerable<IndexToDoViewModel> toDoList;        
+
 
         protected override async Task OnInitializedAsync()
-        {   
-            toDoList = await HttpClient.GetFromJsonAsync<IEnumerable<IndexToDoViewModel>>("api/ToDo");
-            ToDo = toDoList.FirstOrDefault();
+        {
+            await GetData();
         }
 
-                  
-            //base.OnInitialized();
-        
+        private async Task GetData()
+        {
+            toDoList = await HttpClient.GetFromJsonAsync<IEnumerable<IndexToDoViewModel>>("api/ToDo");
+        }
+
+        protected async Task Delete(string id)
+        {
+            await HttpClient.DeleteAsync($"api/todo/{id}");
+            await GetData();
+        }
+
+
+        protected async Task Create(CreateToDoViewModel createToDoViewModel)
+        {
+            await HttpClient.PostAsJsonAsync("api/todo", createToDoViewModel);
+            await GetData();
+        }
+        protected async Task Update(UpdateToDoViewModel item)
+        {
+            await HttpClient.PutAsJsonAsync($"api/todo/{item.Id}", item);
+            await GetData();
+        }
+
     }
 }

@@ -1,0 +1,33 @@
+﻿@using BlazorToDoList.Data.Models
+@inherits CreateToDoComponentModel
+
+<MatButton 
+           Icon="@MatIconNames.Add_circle" 
+           OnClick="@OpenDialog" 
+           Raised="true" 
+           Style="margin-left:10px; background-color:forestgreen">
+    Add new
+</MatButton>
+
+<MatDialog @bind-IsOpen="@dialogIsOpen" >
+    <MatDialogTitle>Hi</MatDialogTitle>
+    <MatDialogContent Style="min-width:400px">
+        <p>What's your new ToDo?</p>
+        <p>
+            <MatTextField @bind-Value="@Description" Label="What need To do" FullWidth="true"></MatTextField>
+        </p>
+        <MatSelect Label="Status of work" @bind-Value="StatusValue">
+            @foreach(var item in Enum.GetNames(typeof(Status)).Where(x =>x!="None"))
+            {
+                <MatOptionString Value="@item">@item</MatOptionString>
+            }           
+            
+        </MatSelect>
+
+
+    </MatDialogContent>
+    <MatDialogActions>
+        <MatButton OnClick="@(e => { dialogIsOpen = false; })">No Thanks</MatButton>
+        <MatButton OnClick="@OkClick">OK</MatButton>
+    </MatDialogActions>
+</MatDialog>

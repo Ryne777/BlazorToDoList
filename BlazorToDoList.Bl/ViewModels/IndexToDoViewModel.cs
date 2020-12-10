@@ -1,6 +1,6 @@
 ﻿namespace BlazorToDoList.Bl.ViewModels
 {
-    public class IndexToDoViewModel
+    public record IndexToDoViewModel
     {
         public string Id { get; set; }
         public string Description { get; set; }

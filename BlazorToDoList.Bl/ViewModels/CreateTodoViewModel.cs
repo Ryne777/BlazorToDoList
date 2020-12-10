@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace BlazorToDoList.Bl.ViewModels
 {
-    public class CreateTodoViewModel : IValidatableObject
+    public record CreateToDoViewModel : IValidatableObject
     {
         [Required]
         [MinLength(3, ErrorMessage = "min length 3")]

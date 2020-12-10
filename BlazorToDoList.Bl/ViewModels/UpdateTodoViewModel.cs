@@ -4,8 +4,9 @@ using System.ComponentModel.DataAnnotations;
 
 namespace BlazorToDoList.Bl.ViewModels
 {
-    public class UpdateTodoViewModel : IValidatableObject
+    public record UpdateToDoViewModel : IValidatableObject
     {
+        public string Id { get; set; }
         public Status Status { get; set; }
         public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
         {

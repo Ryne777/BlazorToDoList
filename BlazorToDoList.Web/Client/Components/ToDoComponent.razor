@@ -1,22 +1,39 @@
 ﻿@inherits ToDoComponentModel
-
-<MatCard class="demo-mat-card">
-    <div class="demo-mat-card-content">
-        <MatHeadline6 class="demo-mat-card-clean-margin">
+@using BlazorToDoList.Data.Models
+<MatCard class="demo-mat-card" Style="min-width: 500px">
+    <div class="demo-mat-card-content" Style="width:100%; justify-content:space-between;">
+        <MatHeadline5 class="demo-mat-card-clean-margin">
             @ToDo.Description
+        </MatHeadline5>
+        <MatHeadline6 class="demo-mat-card-clean-margin" Style="color:dimgray">
+            @ToDo.Status.ToString()
         </MatHeadline6>
     </div>
     <MatCardActions>
-        <MatCardActionButtons>
-            <MatButton>Read</MatButton>
-            <MatButton>Bookmark</MatButton>
-        </MatCardActionButtons>
-
-        <MatCardActionIcons>
-            <MatIconButton Icon="@MatIconNames.Favorite"></MatIconButton>
-            <MatIconButton Icon="@MatIconNames.Dashboard"></MatIconButton>
-        </MatCardActionIcons>
+        <MatCardActionButtons Style="width:100%; justify-content:space-between;">
+            <MatButton Icon="@MatIconNames.Edit"@onclick="OpenDialog" >Edit</MatButton>
+            <MatButton Icon="@MatIconNames.Delete" Style="color: red" @onclick="(()=> DeleteEvent.InvokeAsync(ToDo))">Delete</MatButton>
+        </MatCardActionButtons>        
     </MatCardActions>
 </MatCard>
 
+<MatDialog @bind-IsOpen="@dialogIsOpen">
+    <MatDialogTitle>Hi</MatDialogTitle>
+    <MatDialogContent Style="min-width:400px">
+        <p>What's your new status for this ToDo?</p>
+       
+        <MatSelect Label="Status of work" @bind-Value="StatusValue">
+            @foreach (var item in Enum.GetNames(typeof(Status)).Where(x => x != "None"))
+            {
+                <MatOptionString Value="@item">@item</MatOptionString>
+            }
 
+        </MatSelect>
+
+
+    </MatDialogContent>
+    <MatDialogActions>
+        <MatButton OnClick="@(e => { dialogIsOpen = false; })">No Thanks</MatButton>
+        <MatButton OnClick="@OkClick">OK</MatButton>
+    </MatDialogActions>
+</MatDialog>

@@ -33,14 +33,14 @@ namespace BlazorToDoList.Web.Server.Controllers
 
         // POST api/<ToDoController>
         [HttpPost]
-        public async Task CreateToDo([FromBody] CreateTodoViewModel value)
+        public async Task CreateToDo([FromBody] CreateToDoViewModel value)
         {
             await _service.CreateToDo(value);
         }
 
         // PUT api/<ToDoController>/5
         [HttpPut("{id}")]
-        public async Task Update(string id, [FromBody] UpdateTodoViewModel value)
+        public async Task Update(string id, [FromBody] UpdateToDoViewModel value)
         {
             await _service.UpdateToDo(id, value);
         }

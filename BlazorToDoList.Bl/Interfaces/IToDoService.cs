@@ -6,7 +6,7 @@ namespace BlazorToDoList.Bl.Interfaces
 {
     public interface IToDoService
     {
-        Task CreateToDo(CreateTodoViewModel item);
+        Task CreateToDo(CreateToDoViewModel item);
 
         Task DeleteToDo(string id);
 
@@ -14,6 +14,6 @@ namespace BlazorToDoList.Bl.Interfaces
 
         Task<IndexToDoViewModel> GetOneToDoById(string id);
 
-        Task<int> UpdateToDo(string id, UpdateTodoViewModel item);
+        Task UpdateToDo(string id, UpdateToDoViewModel item);
     }
 }

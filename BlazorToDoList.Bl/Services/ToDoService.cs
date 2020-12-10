@@ -18,7 +18,7 @@ namespace BlazorToDoList.Bl.Services
 
         }
 
-        public async Task CreateToDo(CreateTodoViewModel item)
+        public async Task CreateToDo(CreateToDoViewModel item)
         {
             await _uow.GetRepository<ToDo>().Create(new ToDo
             {
@@ -63,13 +63,13 @@ namespace BlazorToDoList.Bl.Services
             };
         }
 
-        public async Task<int> UpdateToDo(string id, UpdateTodoViewModel item)
+        public async Task UpdateToDo(string id, UpdateToDoViewModel item)
         {
             var repos = _uow.GetRepository<ToDo>();
             var toDo = await repos.Get(Guid.Parse(id));
             toDo.Status = item.Status;
             repos.Update(toDo);
-            return await _uow.SaveChangesAsync();
+            await _uow.SaveChangesAsync();
         }
     }
 }
