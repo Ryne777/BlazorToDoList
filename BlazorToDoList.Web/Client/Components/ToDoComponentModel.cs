@@ -21,7 +21,7 @@ namespace BlazorToDoList.Web.Client.Components
 
         public UpdateToDoViewModel SaveToDo { get; set; }
         protected  string StatusValue { get; set; }
-        protected bool dialogIsOpen = false;
+        protected bool dialogIsOpen = false;        
 
         protected void OpenDialog()
         {
@@ -41,8 +41,12 @@ namespace BlazorToDoList.Web.Client.Components
                     Status = (Status)Enum.Parse(typeof(Status), StatusValue)
                 };
                 UpdateEvent.InvokeAsync(SaveToDo);
+                
             }
         }
+       
+
+
 
     }
 }

@@ -3,10 +3,15 @@
 
 @if (toDoList == null)
 {
-    <p><em>Loading...</em></p>
+    <MatProgressCircle Closed="true" Style="margin:auto" />
+}
+else if (toDoList.Count() == 0)
+{
+    <MatH3>Nofing to show</MatH3>
 }
 else
 {
+
     <ToDoListComponent ToDoList="toDoList" Delete="Delete" UpdateEvent="Update"></ToDoListComponent>
 }
 <CreateToDoComponent NewToDo="Create"></CreateToDoComponent>

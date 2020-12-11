@@ -1,5 +1,10 @@
 ﻿@inherits ToDoListComponentModel
 
+<div style="display:flex; flex-direction: row; justify-content:space-around; justify-items:stretch">
+    <MatButton Icon="@MatIconNames.Arrow_upward" @onclick="OrderByStatusUp">Status up</MatButton>
+    <MatButton Icon="@MatIconNames.Arrow_downward" @onclick="OrderByStatusDown">Status down</MatButton>
+</div>
+
 
 <div>
     @foreach (var item in ToDoList)

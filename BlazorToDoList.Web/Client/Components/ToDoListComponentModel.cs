@@ -26,5 +26,14 @@ namespace BlazorToDoList.Web.Client.Components
             UpdateEvent.InvokeAsync(item);            
         }
 
+        protected void OrderByStatusDown()
+        {
+            ToDoList = ToDoList.OrderBy(x => x.Status);
+        }
+        protected void OrderByStatusUp()
+        {
+            ToDoList = ToDoList.OrderByDescending(x => x.Status);
+        }
+
     }
 }

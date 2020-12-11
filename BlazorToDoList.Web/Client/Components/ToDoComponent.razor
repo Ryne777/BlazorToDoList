@@ -1,6 +1,6 @@
 ﻿@inherits ToDoComponentModel
 @using BlazorToDoList.Data.Models
-<MatCard class="demo-mat-card" Style="min-width: 500px">
+<MatCard class="demo-mat-card" Style="min-width: 310px">
     <div class="demo-mat-card-content" Style="width:100%; justify-content:space-between;">
         <MatHeadline5 class="demo-mat-card-clean-margin">
             @ToDo.Description
@@ -11,7 +11,7 @@
     </div>
     <MatCardActions>
         <MatCardActionButtons Style="width:100%; justify-content:space-between;">
-            <MatButton Icon="@MatIconNames.Edit"@onclick="OpenDialog" >Edit</MatButton>
+            <MatButton Icon="@MatIconNames.Edit"@onclick="OpenDialog"  >Edit</MatButton>
             <MatButton Icon="@MatIconNames.Delete" Style="color: red" @onclick="(()=> DeleteEvent.InvokeAsync(ToDo))">Delete</MatButton>
         </MatCardActionButtons>        
     </MatCardActions>
@@ -20,17 +20,13 @@
 <MatDialog @bind-IsOpen="@dialogIsOpen">
     <MatDialogTitle>Hi</MatDialogTitle>
     <MatDialogContent Style="min-width:400px">
-        <p>What's your new status for this ToDo?</p>
-       
+        <p>What's your new status for this ToDo?</p>       
         <MatSelect Label="Status of work" @bind-Value="StatusValue">
             @foreach (var item in Enum.GetNames(typeof(Status)).Where(x => x != "None"))
             {
                 <MatOptionString Value="@item">@item</MatOptionString>
             }
-
         </MatSelect>
-
-
     </MatDialogContent>
     <MatDialogActions>
         <MatButton OnClick="@(e => { dialogIsOpen = false; })">No Thanks</MatButton>
