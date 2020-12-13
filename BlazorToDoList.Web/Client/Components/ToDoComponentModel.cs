@@ -44,9 +44,15 @@ namespace BlazorToDoList.Web.Client.Components
                 
             }
         }
-       
-
-
-
+        protected string ChangeColor()
+        {
+            return ToDo.Status switch 
+            {
+                "InWork" => "blue",
+                "Faild" => "red",
+                "Completed" =>" green"    
+                
+            };
+        }
     }
 }

@@ -1,9 +1,11 @@
 ﻿<!DOCTYPE html>
 <html>
-
-<head>
+  <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
     <title>BlazorToDoList.Web</title>
     <base href="/" />
     <link href="css/app.css" rel="stylesheet" />
@@ -12,18 +14,25 @@
     <link rel="apple-touch-icon" sizes="512x512" href="icon-512.png" />
     <script src="_content/MatBlazor/dist/matBlazor.js"></script>
     <link href="_content/MatBlazor/dist/matBlazor.css" rel="stylesheet" />
-</head>
+  </head>
 
-<body>
-    <div id="app"style="margin:auto; padding:10px"><img src="https://i.gifer.com/CVyf.gif" alt="Loading..."/></div>
+  <body>
+    <div id="app">
+      <img
+        src="https://i.gifer.com/CVyf.gif"
+        alt="Loading..."
+        style="margin: auto; padding: 10px"
+      />
+    </div>
 
     <div id="blazor-error-ui">
-        An unhandled error has occurred.
-        <a href="" class="reload">Reload</a>
-        <a class="dismiss">🗙</a>
+      An unhandled error has occurred.
+      <a href="" class="reload">Reload</a>
+      <a class="dismiss">🗙</a>
     </div>
     <script src="_framework/blazor.webassembly.js"></script>
-    <script>navigator.serviceWorker.register('service-worker.js');</script>
-</body>
-
+    <script>
+      navigator.serviceWorker.register("service-worker.js");
+    </script>
+  </body>
 </html>

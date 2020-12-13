@@ -5,9 +5,9 @@
         <MatHeadline5 class="demo-mat-card-clean-margin">
             @ToDo.Description
         </MatHeadline5>
-        <MatHeadline6 class="demo-mat-card-clean-margin" Style="color:dimgray">
-            @ToDo.Status.ToString()
-        </MatHeadline6>
+        <p>
+            <div class="mat-subtitle1" style="background-color: @ChangeColor();">@ToDo.Status.ToString()</div>
+        </p>
     </div>
     <MatCardActions>
         <MatCardActionButtons Style="width:100%; justify-content:space-between;">
