@@ -5,6 +5,7 @@ using Microsoft.Extensions.DependencyInjection;
 using System.Net.Http;
 using System;
 using System.Threading.Tasks;
+using Microsoft.Extensions.Configuration;
 
 namespace BlazorToDoList.Web.Client
 {
@@ -15,14 +16,29 @@ namespace BlazorToDoList.Web.Client
             var builder = WebAssemblyHostBuilder.CreateDefault(args);
             builder.RootComponents.Add<App>("#app");
 
-            builder.Services.AddHttpClient("BlazorToDoList.ServerAPI", client => client.BaseAddress = new Uri(builder.HostEnvironment.BaseAddress))
-                 .AddHttpMessageHandler<BaseAddressAuthorizationMessageHandler>();
-
-            // Supply HttpClient instances that include access tokens when making requests to the server project
-            builder.Services.AddScoped(sp => sp.GetRequiredService<IHttpClientFactory>().CreateClient("BlazorToDoList.ServerAPI"));
+            builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
             builder.Services.AddMatBlazor();
-            builder.Services.AddOptions();
-            builder.Services.AddApiAuthorization();
+            //builder.Services.AddOptions();
+            //builder.Services.AddApiAuthorization();
+            builder.Services.AddOidcAuthentication(options =>
+            {
+                // Configure your authentication provider options here.
+                // For more information, see https://aka.ms/blazor-standalone-auth
+                options.ProviderOptions.Authority = "https://localhost:10001";
+                options.ProviderOptions.ClientId = "client_blazor_web_assembly";
+                options.ProviderOptions.RedirectUri = "https://localhost:5001/authentication/login-callback";
+                options.ProviderOptions.DefaultScopes.Add("openid");
+                options.ProviderOptions.DefaultScopes.Add("profile");                
+                options.ProviderOptions.DefaultScopes.Add("blazor");
+                options.ProviderOptions.ResponseMode = "query";
+                options.ProviderOptions.ResponseType = "code";
+                options.UserOptions.NameClaim = "sub";
+                
+
+
+                builder.Configuration.Bind("oidc", options.ProviderOptions);
+
+            });
 
             await builder.Build().RunAsync();
         }

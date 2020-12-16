@@ -20,6 +20,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorToDoList.Web.Client",
 		{8E5E9037-A1B6-4F1B-9AA3-BD3442526A5F} = {8E5E9037-A1B6-4F1B-9AA3-BD3442526A5F}
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlazorToDoList.IdentityServer", "BlazorToDoList.IdentityServer\BlazorToDoList.IdentityServer.csproj", "{F7D9AC8A-7367-48F4-A8C8-ABADF9C9C8AF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -46,6 +48,10 @@ Global
 		{8E9DD4A5-3561-4AEB-8850-A966461867FE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8E9DD4A5-3561-4AEB-8850-A966461867FE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8E9DD4A5-3561-4AEB-8850-A966461867FE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F7D9AC8A-7367-48F4-A8C8-ABADF9C9C8AF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F7D9AC8A-7367-48F4-A8C8-ABADF9C9C8AF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F7D9AC8A-7367-48F4-A8C8-ABADF9C9C8AF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F7D9AC8A-7367-48F4-A8C8-ABADF9C9C8AF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

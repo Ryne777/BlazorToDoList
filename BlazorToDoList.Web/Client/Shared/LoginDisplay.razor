@@ -3,12 +3,12 @@
 
 <AuthorizeView>
     <Authorized>
-        <a href="authentication/profile">Hello, @context.User.Identity.Name!</a>
-        <button class="nav-link btn btn-link" @onclick="BeginSignOut">Log out</button>
+        <MatButtonLink Href="authentication/profile" Style="color:white">Hello, @context.User.Identity.Name!</MatButtonLink>
+        <MatButton @onclick="BeginSignOut" Style="color:white">Log out</MatButton>
     </Authorized>
     <NotAuthorized>
-        <a href="authentication/register">Register</a>
-        <a href="authentication/login">Log in</a>
+        <MatButtonLink Href="authentication/register" Style="color:white">Register</MatButtonLink>
+        <MatButtonLink Href="authentication/login" Style="color:white">Log in</MatButtonLink>
     </NotAuthorized>
 </AuthorizeView>
 
