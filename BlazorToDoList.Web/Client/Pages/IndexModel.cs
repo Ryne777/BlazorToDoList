@@ -11,9 +11,9 @@ namespace BlazorToDoList.Web.Client.Pages
     public class IndexModel : ComponentBase
     {
         [Inject]
-        private HttpClient HttpClient { get; set; }
-        protected IEnumerable<IndexToDoViewModel> toDoList;        
-
+        private IHttpClientFactory HttpClientFactory { get; set; }
+        protected IEnumerable<IndexToDoViewModel> toDoList;
+        private HttpClient HttpClient => HttpClientFactory.CreateClient("ServerAPI");
 
         protected override async Task OnInitializedAsync()
         {

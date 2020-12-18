@@ -30,7 +30,7 @@ namespace BlazorToDoList.IdentityServer
                 .AddInMemoryClients(IdentityServerConfiguration.GetClients())
                 .AddDeveloperSigningCredential();
             services.AddControllersWithViews();
-            services.AddCors();
+            //services.AddCors();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -42,12 +42,12 @@ namespace BlazorToDoList.IdentityServer
             }
 
             app.UseRouting();
-            app.UseCors(build =>
-            build.AllowAnyOrigin()
-               .AllowAnyMethod()
-               .AllowAnyHeader());
-            app.UseAuthentication();
-            app.UseAuthorization();
+            //app.UseCors(build =>
+            //build.AllowAnyOrigin()
+            //   .AllowAnyMethod()
+            //   .AllowAnyHeader());
+            //app.UseAuthentication();
+            //app.UseAuthorization();
             app.UseIdentityServer();
 
             app.UseEndpoints(endpoints =>

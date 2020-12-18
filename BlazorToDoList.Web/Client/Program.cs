@@ -16,7 +16,17 @@ namespace BlazorToDoList.Web.Client
             var builder = WebAssemblyHostBuilder.CreateDefault(args);
             builder.RootComponents.Add<App>("#app");
 
-            builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
+            
+            builder.Services.AddHttpClient("ServerAPI",
+            client => client.BaseAddress = new Uri(builder.HostEnvironment.BaseAddress));
+            builder.Services.AddScoped(sp => sp.GetRequiredService<IHttpClientFactory>()
+                .CreateClient("ServerAPI"));
+
+            builder.Services.AddHttpClient("ServerAuth",
+           client => client.BaseAddress = new Uri("https://localhost:10001"))
+                .AddHttpMessageHandler<BaseAddressAuthorizationMessageHandler>();
+            builder.Services.AddScoped(sp => sp.GetRequiredService<IHttpClientFactory>()
+                .CreateClient("ServerAuth"));
             builder.Services.AddMatBlazor();
             //builder.Services.AddOptions();
             //builder.Services.AddApiAuthorization();
