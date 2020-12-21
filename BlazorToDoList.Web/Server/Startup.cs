@@ -41,6 +41,7 @@ namespace BlazorToDoList.Web.Server
             services.AddScoped<ApplicationDbContext>();
             services.AddScoped<IToDoService, ToDoService>();
             services.AddScoped<IUnitOfWork, EFGenericUnitOfWork<ApplicationDbContext>>();
+            services.AddCors();
 
         }
 
@@ -67,8 +68,13 @@ namespace BlazorToDoList.Web.Server
             app.UseHttpsRedirection();
             app.UseBlazorFrameworkFiles();
             app.UseStaticFiles();
-
+            app.UseCors(build =>
+            build.AllowAnyOrigin()
+               .AllowAnyMethod()
+               .AllowAnyHeader());
             app.UseRouting();
+            
+            
 
             app.UseEndpoints(endpoints =>
             {

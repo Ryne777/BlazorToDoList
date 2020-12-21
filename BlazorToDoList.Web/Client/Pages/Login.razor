@@ -1,0 +1,16 @@
+﻿@page "/Login"
+<EditForm Model="myModel">
+    <DataAnnotationsValidator />
+    <p>
+        <MatTextField Label="Username" @bind-Value="myModel.Username" />
+        <ValidationMessage For="@(() => myModel.Username)" />
+    </p>
+    <p>
+        <MatTextField Label="Password" @bind-Value="myModel.Password" Type="password" />
+        <ValidationMessage For="@(() => myModel.Password)" />
+    </p>
+</EditForm>
+<div class="mat-layout-grid-cell mat-layout-grid-cell-span-4">
+    <MatButton Type="submit" OnClick="Success" Raised="true">Login</MatButton>
+    <MatButton Raised="true" OnClick="Reset">Reset</MatButton>
+</div>

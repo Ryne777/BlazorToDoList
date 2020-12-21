@@ -32,18 +32,18 @@ namespace BlazorToDoList.Web.Client
             //builder.Services.AddApiAuthorization();
             builder.Services.AddOidcAuthentication(options =>
             {
-                // Configure your authentication provider options here.
+                //Configure your authentication provider options here.
                 // For more information, see https://aka.ms/blazor-standalone-auth
                 options.ProviderOptions.Authority = "https://localhost:10001";
                 options.ProviderOptions.ClientId = "client_blazor_web_assembly";
                 options.ProviderOptions.RedirectUri = "https://localhost:5001/authentication/login-callback";
                 options.ProviderOptions.DefaultScopes.Add("openid");
-                options.ProviderOptions.DefaultScopes.Add("profile");                
+                options.ProviderOptions.DefaultScopes.Add("profile");
                 options.ProviderOptions.DefaultScopes.Add("blazor");
                 options.ProviderOptions.ResponseMode = "query";
                 options.ProviderOptions.ResponseType = "code";
                 options.UserOptions.NameClaim = "sub";
-                
+
 
 
                 builder.Configuration.Bind("oidc", options.ProviderOptions);

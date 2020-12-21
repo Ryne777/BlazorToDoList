@@ -16,7 +16,7 @@ namespace BlazorToDoList.IdentityServer
 
         internal static IEnumerable<ApiScope> GetApiScopes()
         {
-            yield return new ApiScope("SwaggerAPI", "Swagger API");
+            //yield return new ApiScope("SwaggerAPI", "Swagger API");
             yield return new ApiScope("blazor", "Blazor WebAssembly");
         }
 
@@ -24,8 +24,8 @@ namespace BlazorToDoList.IdentityServer
         {
             yield return new IdentityResources.OpenId();
             yield return new IdentityResources.Profile();
-            yield return new IdentityResources.Address();
-            yield return new IdentityResources.Email();
+            //yield return new IdentityResources.Address();
+            //yield return new IdentityResources.Email();
         }
 
         internal static IEnumerable<Client> GetClients() =>
@@ -37,7 +37,7 @@ namespace BlazorToDoList.IdentityServer
                 RequireClientSecret = false,
                 //ClientSecrets = {new Secret("blazor_client_secrets".Sha256()) },
                 RequireConsent = false,
-                RequirePkce = true,
+                RequirePkce = false,
                 AllowedGrantTypes =  GrantTypes.Code,
                 AllowedCorsOrigins = { "https://localhost:5001" },
                 PostLogoutRedirectUris = { "https://localhost:5001/authentication/logout-callback" },
@@ -47,8 +47,8 @@ namespace BlazorToDoList.IdentityServer
                     "blazor",
                     IdentityServerConstants.StandardScopes.OpenId,
                     IdentityServerConstants.StandardScopes.Profile,
-                    IdentityServerConstants.StandardScopes.Address,
-                    IdentityServerConstants.StandardScopes.Email
+                    //IdentityServerConstants.StandardScopes.Address,
+                    //IdentityServerConstants.StandardScopes.Email
                 }
             }
         };

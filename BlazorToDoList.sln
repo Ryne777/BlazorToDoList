@@ -20,7 +20,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorToDoList.Web.Client",
 		{8E5E9037-A1B6-4F1B-9AA3-BD3442526A5F} = {8E5E9037-A1B6-4F1B-9AA3-BD3442526A5F}
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlazorToDoList.IdentityServer", "BlazorToDoList.IdentityServer\BlazorToDoList.IdentityServer.csproj", "{F7D9AC8A-7367-48F4-A8C8-ABADF9C9C8AF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorToDoList.IdentityServer", "BlazorToDoList.IdentityServer\BlazorToDoList.IdentityServer.csproj", "{F7D9AC8A-7367-48F4-A8C8-ABADF9C9C8AF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -19,8 +19,8 @@ namespace BlazorToDoList.Controllers
 
         public IdentificationController(
             IIdentityServerInteractionService interaction)
-            //SignInManager<ApplicationUser> signInManager,
-            //UserManager<ApplicationUser> userManager)
+        //SignInManager<ApplicationUser> signInManager,
+        //UserManager<ApplicationUser> userManager)
         {
             _interaction = interaction;
             //_signInManager = signInManager;
@@ -43,14 +43,14 @@ namespace BlazorToDoList.Controllers
                 return View(model);
             }
 
-            if(model.UserName != "my.email.ru")
+            if (model.UserName != "my.email.ru")
             {
                 ModelState.AddModelError("", "Not found.");
                 return View(model);
             }
-            await HttpContext.SignInAsync( new IdentityServerUser(model.UserName));
+            await HttpContext.SignInAsync(new IdentityServerUser(model.UserName));
 
-            
+
 
             return Redirect(model.ReturnUrl);
         }
